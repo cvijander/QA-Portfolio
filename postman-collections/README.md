@@ -1,79 +1,40 @@
 # Postman API Tests – Swagger Petstore
 
-This collection contains 9 API test requests for the Swagger Petstore API, covering both positive and negative test scenarios.
+This collection contains API tests for the Swagger Petstore v2 API. It includes a variety of requests covering different endpoints and HTTP methods, with both positive and negative test scenarios.
+
+The primary focus is on the `/pet` endpoint to demonstrate a complete CRUD (Create, Read, Update, Delete) workflow, including test scripts for validating responses.
 
 ---
 
-## 🔁 Overview of Requests
+### 📂 How to Use
 
-| Method | Description                                      | Type        |
-|--------|--------------------------------------------------|-------------|
-| POST   | Add a new pet to the store (happy path)          | Positive    |
-| POST   | Add a new pet to the store (empty body)          | Negative    |
-| PUT    | Update an existing pet                           | Positive    |
-| POST   | Update pet by form (happy path)                  | Positive    |
-| POST   | Update pet by form (non-existing ID)             | Negative    |
-| GET    | Find pet by ID (happy path)                      | Positive    |
-| GET    | Find pet by ID (not found)                       | Negative    |
-| DELETE | Remove pet (happy path)                          | Positive    |
-| DELETE | Remove pet (non-existing ID)                     | Negative    |
-| POST   | Upload pet image                                 | Positive    |
+1.  **Import Collection**: Import the `Swagger Petstore.postman_collection.json` file into your Postman application.
+2.  **Set Base URL**: The collection uses a variable `{{baseUrl}}` which is pre-configured to `https://petstore.swagger.io/v2`.
 
 ---
 
-## 🛠️ Tools Used
+### 🔁 Test Scenarios Overview
 
-- Postman
-- JavaScript (for test scripts)
-- Swagger Petstore API – [swagger.io](https://swagger.io)
-
----
-
-## 📁 Files Included
-
-- `Swagger Petstore.postman_collection.json` – Exported Postman collection
-- `README.md` – This file
-
----
-
-## 📌 Notes
-
-This test collection is part of a QA learning project. It demonstrates knowledge of:
-- REST API concepts
-- Positive and negative test paths
-- Postman scripting and assertions
-- Status code validation
-- Request body and response handling
+| Method | Endpoint | Description | Test Type |
+| :--- | :--- | :--- | :--- |
+| **POST** | `/pet` | Add a new pet with a valid body. | **Positive** |
+| **POST** | `/pet` | Attempt to add a pet with an empty body. | **Negative** |
+| **GET** | `/pet/{petId}` | Find the newly created pet by its ID. | **Positive** |
+| **GET**| `/pet/{petId}` | Attempt to find a pet with a non-existent ID. | **Negative** |
+| **PUT** | `/pet` | Update the status of the created pet to "sold". | **Positive** |
+| **POST** | `/pet/{petId}` | Upload an image for the pet. | **Positive**|
+| **DELETE** | `/pet/{petId}` | Delete the created pet. | **Positive** |
+| **DELETE**| `/pet/{petId}` | Attempt to delete the same pet again (should fail). | **Negative** |
 
 ---
 
-## 🔍 Test Case Details
+### 🛠️ Tools & Concepts Demonstrated
 
----
-
-### 1. Add a New Pet (Happy Path)
-
-**Method**: POST  
-**Endpoint**: `/pet`  
-**Type**: Positive
-
-**Request Body**:
-```json
-{
-  "id": 262626,
-  "category": {
-    "id": 0,
-    "name": "dogs"
-  },
-  "name": "Vucko",
-  "photoUrls": [
-    "https://scontent.fbeg10-1.fna.fbcdn.net/v/t39.30808-6/464265904_8718019838258636_2868834979414991522_n.jpg"
-  ],
-  "tags": [
-    {
-      "id": 0,
-      "name": "friendly"
-    }
-  ],
-  "status": "available"
-}
+* **Tool**: Postman
+* **API**: Swagger Petstore API (swagger.io)
+* **Concepts**:
+    * REST API testing (GET, POST, PUT, DELETE)
+    * Positive and negative test paths
+    * Chaining requests (using a variable from one request in another)
+    * Postman scripting (JavaScript) for assertions
+    * Status code and response body validation
