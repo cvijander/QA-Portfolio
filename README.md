@@ -33,8 +33,6 @@ Here you can find examples of my work, organized by category:
 ###  Tools & Technologies
 
 The tools I used for these tasks include:
-* Jira (for ticket writing)
 * Postman
 * SQL
 * Google Docs / Markdown
-* (Add any other tools you've used)
